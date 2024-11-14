@@ -1,0 +1,162 @@
+Introduction Slide
+
+
+Hook: "From room-sized computers to AI in your pocket: The evolution of hardware for artificial intelligence"
+
+
+Early Computing and AI (1940s-1970s)
+Text content:
+
+
+First electronic computers (ENIAC, 1945) - Used for basic numerical calculations
+Early AI experiments ran on mainframes
+Limited by sequential processing and memory
+Key challenges: Speed, size, and cost
+Notable systems: IBM 704 (used for first AI programs), PDP-11
+
+visuals:
+Photo of ENIAC
+Timeline graphic showing computer sizes vs. computational power
+Early AI programs like Logic Theorist (1956)
+
+
+The Microprocessor Era (1970s-1990s)
+Text content:
+
+
+Introduction of microprocessors (Intel 4004, 1971)
+Moore's Law and its impact
+CPU improvements: clock speed, cache, pipelining
+Early neural network implementations
+Limitations for AI: Sequential processing bottleneck
+
+Suggested visuals:
+
+Moore's Law graph
+Evolution of CPU architecture diagrams
+Photo of Intel 4004
+Simple diagram showing sequential vs parallel processing
+
+
+The Rise of GPUs (1990s-2000s)
+Text content:
+
+
+Originally designed for graphics/gaming
+NVIDIA's introduction of CUDA (2006) - turning point
+Why GPUs work well for AI:
+
+Parallel architecture
+Matrix operations
+High memory bandwidth
+
+
+Impact on deep learning research
+
+Suggested visuals:
+
+GPU architecture diagram
+Comparison chart: CPU vs GPU for matrix operations
+CUDA programming model illustration
+Performance scaling graphs
+
+
+The Deep Learning Revolution (2010s)
+Text content:
+
+
+AlexNet (2012) moment - GPU's role
+Explosion of AI hardware solutions
+Key developments:
+
+NVIDIA's Tesla/Ampere architectures
+Google's TPU introduction
+Rise of AI-specific chips
+
+
+Impact on AI accessibility
+
+Suggested visuals:
+
+AlexNet architecture
+Training time comparison charts
+Timeline of major AI hardware releases
+Performance evolution graph
+
+
+Current Landscape (2020s)
+Text content:
+
+
+Specialized AI processors:
+
+TPUs
+NPUs
+FPGAs
+ASICs
+
+
+Edge computing emergence
+Key factors driving development:
+
+Power efficiency
+Cost
+Specialized architectures
+
+
+
+Suggested visuals:
+
+Comparison matrix of different accelerators
+Power efficiency graphs
+Edge device examples
+Market share visualization
+
+
+Future Trends
+Text content:
+
+
+Neuromorphic computing
+Quantum computing potential
+Hybrid approaches
+Challenges ahead:
+
+Power consumption
+Thermal management
+Cost optimization
+Programming complexity
+
+
+
+Suggested visuals:
+
+Neuromorphic chip architecture
+Power consumption trends
+Future roadmap visualization
+Challenges infographic
+
+
+Real-world Impact
+Text content:
+
+
+Democratization of AI
+Cost reduction over time
+New application possibilities
+Environmental considerations
+
+Suggested visuals:
+
+Cost reduction graph
+Application examples
+Energy consumption comparison
+Accessibility visualization
+
+Key Diagrams to Create:
+
+Timeline spanning 1940s to 2020s showing major hardware milestones
+Processing architecture evolution diagram
+Performance comparison charts
+Power efficiency trends
+Cost vs. Performance relationships

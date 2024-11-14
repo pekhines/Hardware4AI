@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400">
+    <!-- Background -->
+    <rect width="1000" height="400" fill="white"/>
+    
+    <!-- Main Timeline Line -->
+    <line x1="50" y1="200" x2="950" y2="200" stroke="#0092A1" stroke-width="4"/>
+    
+    <!-- Decade Markers -->
+    <g font-family="Arial" font-size="14" fill="#333333">
+        <!-- 1940s -->
+        <line x1="100" y1="190" x2="100" y2="210" stroke="#0092A1" stroke-width="2"/>
+        <text x="85" y="230" text-anchor="middle">1940s</text>
+        
+        <!-- 1950s -->
+        <line x1="200" y1="190" x2="200" y2="210" stroke="#0092A1" stroke-width="2"/>
+        <text x="185" y="230" text-anchor="middle">1950s</text>
+        
+        <!-- 1960s -->
+        <line x1="300" y1="190" x2="300" y2="210" stroke="#0092A1" stroke-width="2"/>
+        <text x="285" y="230" text-anchor="middle">1960s</text>
+        
+        <!-- 1970s -->
+        <line x1="400" y1="190" x2="400" y2="210" stroke="#0092A1" stroke-width="2"/>
+        <text x="385" y="230" text-anchor="middle">1970s</text>
+        
+        <!-- 1980s -->
+        <line x1="500" y1="190" x2="500" y2="210" stroke="#0092A1" stroke-width="2"/>
+        <text x="485" y="230" text-anchor="middle">1980s</text>
+        
+        <!-- 1990s -->
+        <line x1="600" y1="190" x2="600" y2="210" stroke="#0092A1" stroke-width="2"/>
+        <text x="585" y="230" text-anchor="middle">1990s</text>
+        
+        <!-- 2000s -->
+        <line x1="700" y1="190" x2="700" y2="210" stroke="#0092A1" stroke-width="2"/>
+        <text x="685" y="230" text-anchor="middle">2000s</text>
+        
+        <!-- 2010s -->
+        <line x1="800" y1="190" x2="800" y2="210" stroke="#0092A1" stroke-width="2"/>
+        <text x="785" y="230" text-anchor="middle">2010s</text>
+        
+        <!-- 2020s -->
+        <line x1="900" y1="190" x2="900" y2="210" stroke="#0092A1" stroke-width="2"/>
+        <text x="885" y="230" text-anchor="middle">2020s</text>
+    </g>
+
+    <!-- Major Milestones -->
+    <g font-family="Arial" font-size="12">
+        <!-- 1940s -->
+        <circle cx="100" cy="200" r="8" fill="#FF9800"/>
+        <text x="100" y="160" text-anchor="middle" font-weight="bold">ENIAC (1945)</text>
+        <text x="100" y="175" text-anchor="middle" font-size="10">First Electronic Computer</text>
+
+        <!-- 1950s -->
+        <circle cx="200" cy="200" r="8" fill="#FF9800"/>
+        <text x="200" y="260" text-anchor="middle" font-weight="bold">IBM 704 (1954)</text>
+        <text x="200" y="275" text-anchor="middle" font-size="10">First AI Programs</text>
+
+        <!-- 1970s -->
+        <circle cx="400" cy="200" r="8" fill="#FF9800"/>
+        <text x="400" y="160" text-anchor="middle" font-weight="bold">Intel 4004 (1971)</text>
+        <text x="400" y="175" text-anchor="middle" font-size="10">First Microprocessor</text>
+
+        <!-- 1990s -->
+        <circle cx="600" cy="200" r="8" fill="#FF9800"/>
+        <text x="600" y="260" text-anchor="middle" font-weight="bold">NVIDIA GeForce (1999)</text>
+        <text x="600" y="275" text-anchor="middle" font-size="10">GPU Revolution Begins</text>
+
+        <!-- 2000s -->
+        <circle cx="700" cy="200" r="8" fill="#FF9800"/>
+        <text x="700" y="160" text-anchor="middle" font-weight="bold">CUDA (2006)</text>
+        <text x="700" y="175" text-anchor="middle" font-size="10">GPU Computing Platform</text>
+
+        <!-- 2010s Early -->
+        <circle cx="780" cy="200" r="8" fill="#FF9800"/>
+        <text x="780" y="260" text-anchor="middle" font-weight="bold">AlexNet (2012)</text>
+        <text x="780" y="275" text-anchor="middle" font-size="10">Deep Learning Breakthrough</text>
+
+        <!-- 2010s Late -->
+        <circle cx="820" cy="200" r="8" fill="#FF9800"/>
+        <text x="820" y="160" text-anchor="middle" font-weight="bold">TPU (2016)</text>
+        <text x="820" y="175" text-anchor="middle" font-size="10">AI-Specific Hardware</text>
+
+        <!-- 2020s -->
+        <circle cx="900" cy="200" r="8" fill="#FF9800"/>
+        <text x="900" y="260" text-anchor="middle" font-weight="bold">Edge AI (2020s)</text>
+        <text x="900" y="275" text-anchor="middle" font-size="10">Specialized Edge Processors</text>
+    </g>
+
+    <!-- Era Labels -->
+    <g font-family="Arial" font-size="14" font-weight="bold">
+        <text x="250" y="100" fill="#0092A1">Early Computing Era</text>
+        <line x1="250" y1="110" x2="250" y2="180" stroke="#0092A1" stroke-width="1" stroke-dasharray="4"/>
+        
+        <text x="500" y="80" fill="#0092A1">Microprocessor Era</text>
+        <line x1="500" y1="90" x2="500" y2="180" stroke="#0092A1" stroke-width="1" stroke-dasharray="4"/>
+        
+        <text x="700" y="100" fill="#0092A1">GPU Revolution</text>
+        <line x1="700" y1="110" x2="700" y2="180" stroke="#0092A1" stroke-width="1" stroke-dasharray="4"/>
+        
+        <text x="850" y="80" fill="#0092A1">AI Acceleration Era</text>
+        <line x1="850" y1="90" x2="850" y2="180" stroke="#0092A1" stroke-width="1" stroke-dasharray="4"/>
+    </g>
+</svg>
