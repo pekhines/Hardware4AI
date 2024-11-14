@@ -1,0 +1,199 @@
+\documentclass{beamer}
+\usepackage{beamerthemeUfg}
+\usepackage{tikz}
+
+% Set logos - Replace with actual paths to your logos
+\setLogos{path/to/logo1}{path/to/logo2}
+\setColors{MUBlue}
+
+\title{Module 1: Introduction to Hardware Acceleration}
+\subtitle{Hardware Acceleration for AI}
+\author{Your Name}
+\institute{Your Institution}
+\date{\today}
+
+\begin{document}
+
+% Title slide
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% Outline slide
+\begin{frame}
+    \frametitle{Module Overview}
+    \tableofcontents[hideallsubsections]
+\end{frame}
+
+% Introduction
+\setLayout{horizontal}
+\begin{frame}
+    \frametitle{Why Hardware Acceleration?}
+    \begin{block}{Growing Computational Demands}
+        \begin{itemize}
+            \item Increasing model complexity
+            \item Larger datasets
+            \item Real-time processing requirements
+            \item Energy efficiency concerns
+        \end{itemize}
+    \end{block}
+    
+    \begin{alertblock}{Challenges}
+        \begin{itemize}
+            \item Processing speed
+            \item Power consumption
+            \item Cost efficiency
+            \item Deployment flexibility
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+% CPU vs GPU vs Accelerators
+\begin{frame}
+    \frametitle{Processing Units Comparison}
+    \begin{columns}[T]
+        \begin{column}{0.45\textwidth}
+            \begin{block}{CPU}
+                \begin{itemize}
+                    \item General-purpose
+                    \item Sequential processing
+                    \item Complex control logic
+                    \item Few cores, high frequency
+                \end{itemize}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.45\textwidth}
+            \begin{block}{GPU}
+                \begin{itemize}
+                    \item Parallel processing
+                    \item Many simple cores
+                    \item Matrix operations
+                    \item High memory bandwidth
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Dedicated Accelerators
+\begin{frame}
+    \frametitle{Dedicated Accelerators}
+    \begin{block}{Types of Accelerators}
+        \begin{itemize}
+            \item TPU (Tensor Processing Unit)
+            \item FPGA (Field Programmable Gate Array)
+            \item ASIC (Application-Specific Integrated Circuit)
+            \item Neural Processing Units (NPU)
+        \end{itemize}
+    \end{block}
+    
+    \begin{exampleblock}{Key Features}
+        \begin{itemize}
+            \item Optimized for specific operations
+            \item High energy efficiency
+            \item Custom memory hierarchies
+            \item Specialized instruction sets
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+% Performance Metrics
+\begin{frame}
+    \frametitle{Performance Metrics}
+    \begin{block}{Key Performance Indicators}
+        \begin{itemize}
+            \item FLOPS (Floating Point Operations per Second)
+            \item Throughput (Inferences per Second)
+            \item Latency
+            \item Power Efficiency (FLOPS/Watt)
+        \end{itemize}
+    \end{block}
+    
+    \begin{alertblock}{Common Benchmarks}
+        \begin{itemize}
+            \item MLPerf
+            \item AI-Benchmark
+            \item Deep Learning Matrices
+            \item Application-specific metrics
+        \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+% Hardware Platforms Overview
+\begin{frame}
+    \frametitle{Available Hardware Platforms}
+    \begin{columns}[T]
+        \begin{column}{0.45\textwidth}
+            \begin{block}{Jetson Nano}
+                \begin{itemize}
+                    \item 128-core Maxwell GPU
+                    \item Quad-core ARM CPU
+                    \item 4GB RAM
+                    \item 10W power budget
+                \end{itemize}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.45\textwidth}
+            \begin{block}{Raspberry Pi}
+                \begin{itemize}
+                    \item ARM CPU
+                    \item VideoCore GPU
+                    \item Up to 8GB RAM
+                    \item Low power consumption
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Practical Considerations
+\begin{frame}
+    \frametitle{Practical Considerations}
+    \begin{block}{Choosing the Right Platform}
+        \begin{itemize}
+            \item Application requirements
+            \item Power constraints
+            \item Cost considerations
+            \item Development ecosystem
+        \end{itemize}
+    \end{block}
+    
+    \begin{exampleblock}{Use Cases}
+        \begin{itemize}
+            \item Edge inference
+            \item Real-time processing
+            \item Mobile applications
+            \item IoT devices
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+% Summary
+\setLayout{mainpoint}
+\begin{frame}
+    \frametitle{Key Takeaways}
+    \begin{itemize}
+        \item Hardware acceleration is crucial for modern AI applications
+        \item Different platforms offer varying trade-offs
+        \item Performance metrics guide platform selection
+        \item Practice-oriented approach with Jetson Nano and Raspberry Pi
+    \end{itemize}
+\end{frame}
+
+% Next Steps
+\setLayout{horizontal}
+\begin{frame}
+    \frametitle{Next Steps}
+    \begin{block}{Practical Session}
+        \begin{itemize}
+            \item Setting up development environments
+            \item Basic performance measurements
+            \item Platform comparison exercises
+            \item Initial hands-on experience
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\end{document}
