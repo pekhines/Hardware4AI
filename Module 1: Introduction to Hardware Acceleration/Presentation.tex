@@ -448,7 +448,52 @@
             \item Memory access bottleneck
         \end{itemize}
     \end{alertblock}
+    \note{
+    Slide 1: The Birth of Microprocessors
     
+    Historical Context:
+    - Intel 4004 represents a pivotal moment: first time all components of a computer were integrated into a single chip
+    - Originally designed for calculators (Busicom), but Intel retained rights for general use
+    - Price point (200) made computing accessible to new applications
+    
+    Technical Deep Dive:
+    - Architecture details worth emphasizing:
+        * 4-bit data bus but 8-bit instructions
+        * 46 instructions total in instruction set
+        * 10μm process (compare to modern 3nm)
+        * Clock speed limited by process technology
+        * 16-pin package imposed severe I/O limitations
+    
+    Von Neumann Architecture Implications:
+    - Key bottleneck: single bus for data and instructions
+    - Memory access pattern crucial for performance
+    - Explain why this became known as the "Von Neumann bottleneck"
+    - Modern relevance: still impacts AI workloads
+    
+    Teaching Points:
+    - Ask students to calculate theoretical peak performance:
+        * 740KHz × 4-bit = 2.96 Kbit/s
+        * Compare to modern CPU: ~5 trillion bit/s
+    - Discuss why this architecture persisted:
+        * Simplicity of programming model
+        * Cost-effectiveness
+        * Backward compatibility importance
+    
+    AI Historical Context:
+    - Contemporary AI was mainly symbolic (not neural networks)
+    - Pattern matching and rule-based systems
+    - Explain why this influenced early AI architecture choices
+    
+    Common Student Questions:
+    1. "Why 4-bit architecture?"
+        - Cost/complexity tradeoff
+        - Sufficient for calculator operations
+        - Manufacturing limitations
+    2. "Why wasn't parallel processing considered?"
+        - Technology limitations
+        - Programming complexity
+        - Market demands
+}
 \end{frame}
 
 \begin{frame}
@@ -507,7 +552,333 @@
             \item Matrix operations bottleneck
         \end{itemize}
     \end{exampleblock}
+    \note{
+    Slide 2: Moore's Law & Memory Hierarchy
+    
+    Moore's Law Technical Analysis:
+    - Original paper prediction vs. reality
+    - Economic factors driving the law
+    - Physical limitations:
+        * Quantum effects
+        * Heat dissipation
+        * Manufacturing precision
+    - Impact on AI development timeline
+    
+    Memory Hierarchy Deep Dive:
+    - Detailed timing analysis:
+        * L1 Cache: 1-4 cycles
+            - Size typically 32-64KB
+            - Split I-cache and D-cache
+            - Impact on instruction fetch
+        * L2 Cache: 10-20 cycles
+            - Size 256KB-1MB
+            - Unified cache
+            - Prefetch strategies
+        * RAM: 100+ cycles
+            - Impact of page faults
+            - Virtual memory considerations
+    
+    AI Workload Analysis:
+    - Matrix multiplication example:
+        * Cache line utilization
+        * Spatial locality in neural networks
+        * Temporal locality in weight reuse
+    - Memory access patterns:
+        * Forward pass patterns
+        * Backpropagation implications
+        * Weight update locality
+    
+    Performance Calculations:
+    - Memory wall demonstration:
+        * CPU waiting time calculation
+        * Impact on different layer sizes
+        * Roofline model introduction
+    
+    Teaching Tips:
+    - Interactive demonstration:
+        * Calculate memory stall time
+        * Show impact of different matrix sizes
+        * Discuss tiling strategies
+    
+    Industrial Impact:
+    - Why Google developed TPU
+    - NVIDIA's focus on memory bandwidth
+    - Modern solutions to memory wall
+}
 \end{frame}
 
+\begin{frame}
+    \setLayout{horizontal}
+    \frametitle{Pipeline Evolution \& AI Bottlenecks}
+    
+    \begin{block}{Classic RISC Pipeline}
+        \begin{center}
+        \begin{tikzpicture}[scale=0.8]
+            % Pipeline stages
+            \foreach \x/\text in {0/IF, 1/ID, 2/EX, 3/MEM, 4/WB} {
+                \draw[fill=MUBlue!20] (\x*2,0) rectangle (\x*2+1.5,1);
+                \node at (\x*2+0.75,0.5) {\small \text};
+            }
+            % Arrows connecting stages
+            \foreach \x in {0,1,2,3} {
+                \draw[->,thick] (\x*2+1.5,0.5) -- (\x*2+2,0.5);
+            }
+        \end{tikzpicture}
+        \end{center}
+    \end{block}
+    
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \begin{alertblock}{Pipeline Hazards}
+                \small
+                \begin{itemize}\setlength{\itemsep}{0pt}
+                    \item Data Hazards (RAW)
+                    \item Control Hazards
+                    \item Structural Hazards
+                \end{itemize}
+            \end{alertblock}
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \begin{exampleblock}{AI Implications}
+                \small
+                \begin{itemize}\setlength{\itemsep}{0pt}
+                    \item Limited parallelism
+                    \item Branch prediction impact
+                    \item Resource contention
+                \end{itemize}
+            \end{exampleblock}
+        \end{column}
+    \end{columns}
+    
+    \begin{block}{Sequential Processing Analysis}
+        \small
+        Matrix Multiplication (n×n):
+        \begin{itemize}\setlength{\itemsep}{0pt}
+            \item Operations: $O(n^3)$
+            \item Memory Access: $O(n^2)$
+            \item Pipeline Utilization: Limited by dependencies
+        \end{itemize}
+    \end{block}
+
+    \note{
+    Slide 3: Pipeline Evolution & AI Bottlenecks
+    
+    Pipeline Architecture:
+    1. Instruction Fetch (IF)
+        - Program counter management
+        - Instruction cache interaction
+        - Branch prediction impact
+    2. Instruction Decode (ID)
+        - Instruction parsing
+        - Register file access
+        - Dependency checking
+    3. Execute (EX)
+        - ALU operations
+        - Address calculations
+        - Floating point implications
+    4. Memory Access (MEM)
+        - Load/Store operations
+        - Cache interaction
+        - Memory ordering
+    5. Write Back (WB)
+        - Result commitment
+        - Exception handling
+        - Register file update
+    
+    Hazard Analysis for AI:
+    1. Data Hazards
+        - RAW (Read After Write)
+            * Example in matrix operations
+            * Impact on weight updates
+        - WAR (Write After Read)
+            * Less common in AI workloads
+        - WAW (Write After Write)
+            * Buffer management implications
+    
+    2. Control Hazards
+        - Branch prediction importance
+        - Impact on conditional operations
+        - ReLU/activation function branching
+    
+    3. Structural Hazards
+        - Resource conflicts
+        - FPU availability
+        - Memory port contention
+    
+    Performance Analysis:
+    - CPI calculation with hazards
+    - Stall cycle analysis
+    - Branch misprediction penalty
+    
+    Matrix Operations Deep Dive:
+    - Cache line utilization
+    - Register pressure analysis
+    - Instruction scheduling
+    - Loop unrolling opportunities
+    
+    Teaching Examples:
+    1. Pipeline visualization
+        - Show bubble insertion
+        - Demonstrate stall propagation
+        - Explain forwarding paths
+    2. Performance calculation
+        - Basic CPI
+        - Impact of hazards
+        - Memory stall addition
+}
+
+\end{frame}
+
+\begin{frame}
+    \setLayout{horizontal}
+    \frametitle{Early Neural Network Implementations}
+    
+    \begin{columns}[t]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Implementation Challenges}
+                \small
+                \begin{itemize}\setlength{\itemsep}{0pt}
+                    \item Forward Pass Complexity:
+                        \begin{itemize}
+                            \item Sequential: $O(l \cdot n^2)$
+                            \item $l$: layers, $n$: neurons
+                        \end{itemize}
+                    \item Memory Access Patterns
+                    \item Limited Cache Utilization
+                \end{itemize}
+            \end{block}
+            
+            \begin{alertblock}{Early Solutions}
+                \small
+                \begin{itemize}\setlength{\itemsep}{0pt}
+                    \item Systolic Arrays
+                    \item Vector Extensions
+                    \item SIMD Instructions
+                \end{itemize}
+            \end{alertblock}
+        \end{column}
+        
+        \begin{column}{0.45\textwidth}
+            \begin{tikzpicture}[scale=0.7]
+                % Sequential vs Parallel Processing
+                % Sequential
+                \node at (0,2) {\small Sequential};
+                \draw[->] (0,1.5) -- (4,1.5);
+                \foreach \x in {0.5,1.5,2.5,3.5} {
+                    \draw[fill=MUBlue!20] (\x,1.2) rectangle (\x+0.8,1.8);
+                }
+                
+                % Parallel
+                \node at (0,0) {\small Parallel};
+                \foreach \x in {0.5,1.5,2.5,3.5} {
+                    \draw[fill=MUBlue!40] (\x,-0.3) rectangle (\x+0.8,0.3);
+                    \draw[->] (\x+0.4,0.3) -- (\x+0.4,0.8);
+                }
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
+    
+    \begin{exampleblock}{Performance Analysis}
+        \small
+        \begin{itemize}\setlength{\itemsep}{0pt}
+            \item Theoretical vs Achieved Performance
+            \item Memory Bandwidth Limitations
+            \item Synchronization Overhead
+        \end{itemize}
+    \end{exampleblock}
+
+    \note{
+    Slide 4: Early Neural Network Implementations
+    
+    Implementation Complexity:
+    1. Forward Pass Analysis
+        - Detailed complexity breakdown:
+            * Matrix multiplication: O(n²) per layer
+            * Activation functions: O(n) per layer
+            * Total complexity: O(l·n²)
+        - Memory access patterns:
+            * Weight matrix traversal
+            * Activation storage
+            * Gradient computation
+    
+    2. Memory System Impact
+        - Cache behavior analysis:
+            * Spatial locality in weight matrices
+            * Temporal locality in activations
+            * Cache line utilization
+        - Memory bandwidth requirements:
+            * Weight loading
+            * Activation storage
+            * Gradient computation
+    
+    Early Optimization Attempts:
+    1. Systolic Arrays
+        - Architecture explanation:
+            * Processing element design
+            * Data flow patterns
+            * Control mechanisms
+        - Advantages:
+            * Regular data flow
+            * Reduced memory bandwidth
+            * Pipeline utilization
+        - Limitations:
+            * Fixed array size
+            * Inflexible topology
+            * Programming complexity
+    
+    2. Vector Processing
+        - SIMD evolution:
+            * Early vector extensions
+            * Register file design
+            * Instruction scheduling
+        - Implementation challenges:
+            * Vector length limitations
+            * Memory alignment
+            * Compiler optimization
+    
+    Performance Analysis Framework:
+    1. Theoretical Limits
+        - Computation bounds
+        - Memory bandwidth limits
+        - Power constraints
+    
+    2. Practical Considerations
+        - Implementation overhead
+        - Resource contention
+        - System balance
+    
+    Modern Relevance:
+    - Influence on current designs:
+        * TPU architecture
+        * GPU tensor cores
+        * Neural engine designs
+    - Lessons learned:
+        * Memory system importance
+        * Parallelism granularity
+        * Programming model impact
+    
+    Teaching Strategies:
+    1. Comparative Analysis
+        - Sequential vs parallel implementation
+        - Cost-benefit analysis
+        - Performance scaling
+    
+    2. Case Studies
+        - Early success stories
+        - Notable failures
+        - Evolution to modern systems
+    
+    Common Questions:
+    1. "Why weren't GPUs used earlier?"
+        - Technology readiness
+        - Programming model evolution
+        - Market drivers
+    2. "Could better algorithms have helped?"
+        - Algorithm-hardware co-design
+        - Implementation constraints
+        - Development ecosystem
+}
+\end{frame}
 
 \end{document}
