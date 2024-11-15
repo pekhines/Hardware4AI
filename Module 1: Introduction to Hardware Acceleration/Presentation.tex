@@ -154,6 +154,8 @@
 \begin{frame}
 
 \begin{figure}
+    \frametitle{Computing landmarks}
+    \vspace{-0.75cm}
     \centering
     \includegraphics[width=\textwidth]{figs/ai-hardware-timeline}  % don't include the .pdf extension
     \caption{Computing Evolution Timeline}
@@ -323,10 +325,10 @@
 \begin{frame}
     \setLayout{horizontal}
     \frametitle{Early AI: Logic Theorist and Beyond}
-    
+    \vspace{-0.5cm}
     \begin{columns}[t]
         % Left column for Logic Theorist
-        \begin{column}{0.48\textwidth}
+        \begin{column}{0.5\textwidth}
             \begin{block}{Logic Theorist (1956)}
                 \centering
                 \begin{tikzpicture}[scale=0.8]
@@ -352,7 +354,7 @@
         \end{column}
         
         % Right column for impact
-        \begin{column}{0.48\textwidth}
+        \begin{column}{0.5\textwidth}
             \begin{block}{Historical Impact}
                 \small
                 \begin{itemize}\setlength{\itemsep}{0pt}
@@ -390,10 +392,122 @@
     
     Frame 2 teaching points:
     \begin{itemize}
-        \item Explain the significance of automated theorem proving
-        \item Connect to modern AI reasoning systems
-        \item Discuss why Logic Theorist was revolutionary
+        \item Explain the significance of automated theorem proving (basically, a the first informed search problem solving)
+        \item Connect to modern AI reasoning systems (the base of all the optimization problems today)
+        \item Discuss why Logic Theorist was revolutionary (it was the first time a computer could make simulations about a complex concept)
     \end{itemize}
 }
+
+\begin{frame}
+    \setLayout{horizontal}
+    \frametitle{The Birth of Microprocessors}
+    
+    \begin{columns}[t]
+        \begin{column}{0.5\textwidth}
+            \begin{block}{Intel 4004 (1971)}
+                \small
+                \begin{itemize}\setlength{\itemsep}{0pt}
+                    \item First commercial microprocessor
+                    \item Architecture:
+                    \begin{itemize}
+                        \item 4-bit CPU, 740KHz
+                        \item 2,300 transistors
+                        \item 10 $um$ process
+                        \item 640B program memory
+                    \end{itemize}
+                    \item Von Neumann implementation
+                    \item Basic instruction cycle
+                \end{itemize}
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.45\textwidth}
+            \begin{tikzpicture}[scale=0.7]
+                % Simple Von Neumann diagram
+                \draw[rounded corners=3pt, fill=MUBlue!10] (0,0) rectangle (2,1) node[midway] {\small CPU};
+                \draw[rounded corners=3pt, fill=MUBlue!10] (0,2) rectangle (2,3) node[midway] {\small Memory};
+                \draw[->,thick] (1,1) -- (1,2) node[midway,right] {\tiny fetch};
+                \draw[->,thick] (1,2) -- (1,1) node[midway,left] {\tiny store};
+                
+                % Instruction cycle
+                \node[right] at (2.5,1.5) {
+                    \begin{tabular}{l}
+                        \tiny Fetch $\rightarrow$ Decode \\
+                        \tiny $\rightarrow$ Execute $\rightarrow$ Store
+                    \end{tabular}
+                };
+            \end{tikzpicture}
+        \end{column}
+    \end{columns}
+    
+    \begin{alertblock}{AI Implications}
+        \small
+        \begin{itemize}\setlength{\itemsep}{0pt}
+            \item Established sequential processing paradigm
+            \item Limited by single instruction stream
+            \item Memory access bottleneck
+        \end{itemize}
+    \end{alertblock}
+    
+\end{frame}
+
+\begin{frame}
+    \setLayout{horizontal}
+    \frametitle{Moore's Law \& Memory Hierarchy}
+    
+    \begin{columns}[t]
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Moore's Law Analysis}
+                \begin{tikzpicture}[scale=0.6]
+                    % Axes
+                    \draw[->,thick] (0,0) -- (0,5) node[left] {\tiny Transistors};
+                    \draw[->,thick] (0,0) -- (6,0) node[below] {\tiny Year};
+                    
+                    % Exponential curve
+                    \draw[MUBlue,thick] plot[domain=0:5] (\x,{0.2*exp(0.7*\x)});
+                    
+                    % Labels
+                    \node[rotate=90,font=\tiny] at (-0.5,2.5) {Transistors (log)};
+                    \foreach \x/\year in {0/1971,1/1975,2/1980,3/1985,4/1990,5/1995}
+                        \node[below,font=\tiny] at (\x,0) {\year};
+                \end{tikzpicture}
+                
+                \small
+                $Count = 2^{(\frac{Year-1971}{2})}$
+            \end{block}
+        \end{column}
+        
+        \begin{column}{0.48\textwidth}
+            \begin{block}{Memory Hierarchy}
+                \begin{tikzpicture}[scale=0.7]
+                    % Memory pyramid
+                    \draw[fill=MUBlue!80] (0,0) -- (2,0) -- (1,1) -- cycle;
+                    \draw[fill=MUBlue!60] (0,0) -- (3,0) -- (1.5,1.5) -- (-0.5,1.5) -- cycle;
+                    \draw[fill=MUBlue!40] (0,0) -- (4,0) -- (2,2) -- (-1,2) -- cycle;
+                    
+                    % Labels
+                    \node[font=\tiny,white] at (1,0.5) {L1};
+                    \node[font=\tiny,white] at (1,1) {L2};
+                    \node[font=\tiny,white] at (1,1.5) {RAM};
+                    
+                    % Access times
+                    \node[right,font=\tiny] at (2.2,0.5) {1-4 cycles};
+                    \node[right,font=\tiny] at (2.2,1) {10-20 cycles};
+                    \node[right,font=\tiny] at (2.2,1.5) {100+ cycles};
+                \end{tikzpicture}
+            \end{block}
+        \end{column}
+    \end{columns}
+    
+    \begin{exampleblock}{Impact on AI Workloads}
+        \small
+        \begin{itemize}\setlength{\itemsep}{0pt}
+            \item Memory wall problem emergence
+            \item Data locality criticality
+            \item Matrix operations bottleneck
+        \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
 
 \end{document}
